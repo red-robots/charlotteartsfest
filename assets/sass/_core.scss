@@ -1,0 +1,342 @@
+div,h1,h2,h3,h4,h5,h6,p,li,a,span,strong {
+	overflow-wrap: normal;
+    word-wrap: normal;
+    -ms-word-break: normal;
+    word-break: normal;
+    word-break: normal;
+    -ms-hyphens: none;
+    -moz-hyphens: none;
+    -webkit-hyphens: none;
+    hyphens: none;
+    page-break-inside: avoid;
+}
+*, *::before, *::after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+pre {
+	font-family: $font_pre;
+	font-size: 13px;
+	line-height: 1.4;
+	color: #000;
+	display: block;
+	position: relative;
+	z-index: 1000;
+	border: 1px solid #FFF;
+	margin: 5vw;
+	padding: 20px;
+}
+body {
+	font-family: $font_primary;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 1.5;
+	color: $color_text_main;
+  @include tab {
+    font-size: 14px;
+  }
+}
+p {
+  margin: 0 0 1.3em;
+  position: relative;
+  &.list-title {
+    top: 8px;
+  }
+}
+section, div {
+	&:focus {
+		outline: 0;
+	}
+}
+a,input,button,select,textarea {
+	transition: all ease .3s;
+}
+a {
+	color: $blue;
+	text-decoration: underline;
+	&:hover {
+    color: tint($blue,20%);
+	}
+}
+.cf:before, .cf:after {
+    content: " "; 
+    display: table; 
+}
+.cf:after { clear: both; }
+.cf { *zoom: 1; }
+.text-center {text-align:center;}
+.fw,.full {width:100%!important;float:left !important}
+.nomtop {margin-top:0!important;}
+.nombottom {margin-bottom:0!important;}
+/* Text meant only for screen readers. */
+.sr {
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute !important;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+	&:focus {
+		background-color: #333;
+		border-radius: 3px;
+		box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+		clip: auto !important;
+		color: #FFF;
+		display: block;
+		@include font-size(0.875);
+		font-weight: bold;
+		height: auto;
+		left: 5px;
+		line-height: normal;
+		padding: 15px 23px 14px;
+		text-decoration: none;
+		top: 5px;
+		width: auto;
+		z-index: 100000; /* Above WP toolbar. */
+	}
+}
+.flexwrap {
+	position: relative;
+	@include flexgroup();
+}
+.site {
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  min-height: 30em;
+}
+.wp-block-column,
+.wrapper {
+	max-width: 1200px;
+	width: 100%;
+	margin: 0 auto;
+	padding-left: 20px;
+	padding-right: 20px;
+	position: relative;
+	z-index: 10;
+	&.narrow {
+		max-width: 900px;
+	}
+	&.sm {
+		max-width: 800px;
+	}
+	&.wide {
+		max-width: 80%;
+    @include tab {
+      max-width: 90%;
+    }
+	}
+}
+
+.site-header {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  padding: 30px 0;
+  #site-logo {
+    display: inline-block;
+    width: 200px;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+.home-banner {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  .banner-image {
+    width: 100%;
+    height: 100%;
+    float: left;
+    @include backgroundImage(center, $primary-color);
+  }
+  img.image-resizer {
+    width: 100%;
+    height: auto;
+    float: left;
+  }
+  .banner-text {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #FFF;
+    @include flexgroup-center();
+    .inner {
+      max-width: 1200px;
+      width: 100%;
+      margin:0 auto;
+      padding-right: 10vw;
+      padding-left: 30px;
+      @include tab {
+        padding-left: 0;
+      }
+    }
+  }
+  .t1 {
+    font-family: $font_secondary;
+    font-size: 4.5vh;
+    line-height: 1.1;
+    letter-spacing: 1px;
+    animation-duration: 2s;
+    animation-fill-mode: both;
+    animation-name: left-to-right;
+  }
+  .t2 {
+    font-family: $font_secondary;
+    font-size: 12vh;
+    font-weight: bold;
+    line-height: 1.1;
+    span {
+      animation-duration: 2s;
+    }
+  }
+  .t3 {
+    font-family: $font_secondary;
+    font-size: 10vh;
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: 1px;
+    animation-duration: 2s;
+    animation-delay: .8s;
+    animation-fill-mode: both;
+    animation-name: right-to-left;
+  }
+
+  #countdown {
+    display: inline-block;
+    height: 80%;
+    position: absolute;
+    top: 0;
+    right: 5%;
+    text-align: right;
+    font-family: $font_secondary;
+    padding-top: 45vh;
+    color: #FFF;
+    .counttype {
+      margin-bottom: 5vh;
+    }
+    .text {
+      font-size: 2vh;
+      font-weight: 600;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+    .count {
+      font-size: 6vh;
+      font-weight: 600;
+      line-height: 1;
+      position: relative;
+    }
+    #vline {
+      width: 5px;
+      height: 0%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin-bottom: 30px;
+      overflow: hidden;
+      animation-delay: 1s;
+      animation-duration: 5s;
+      animation-fill-mode: both;
+      animation-name: expand-height;
+      span {
+        display: block;
+        width: 100%;
+        height: 100vh;
+        position: absolute;
+        top: -50px;
+        left: 0;
+        background-image:url('assets/images/countdownline.svg');
+        background-size: contain;
+        background-repeat:no-repeat;
+        background-position: top center;
+      }
+    }
+  }
+}
+
+.animate-left-to-right {
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-name: left-to-right;
+  animation-name: left-to-right;
+}
+
+.animate-right-to-left {
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-name: right-to-left;
+  animation-name: right-to-left;
+}
+
+.animate-bottom-top-up {
+  display: inline-block;
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-name: bottom-to-top;
+  animation-name: bottom-to-top;
+}
+
+@keyframes expand-height {
+  from {
+    height: 0;
+  }
+
+  to {
+    height: 100%;
+  }
+}
+
+@keyframes left-to-right {
+  from {
+    opacity: 0;
+    transform: translateX(-10%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+
+@keyframes right-to-left {
+  from {
+    opacity: 0;
+    transform: translateX(10%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+
+@keyframes bottom-to-top {
+  from {
+    opacity: 0;
+    transform: translateY(70%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+
+
+
+
+
