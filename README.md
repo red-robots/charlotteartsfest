@@ -1,3 +1,3 @@
 =======
-# Mill Capital Management
+# Charlotte International Arts Festival
 WordPress Theme
